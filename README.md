@@ -37,22 +37,22 @@ Notes App/
 └── README.md
 ```
 
-## 🚀 Setup Instructions
+# Setup Instructions
 
-### Prerequisites
+## Prerequisites
 
 - Node.js 18+
 - npm
 - MongoDB Atlas account (free tier)
 
-### 1. Clone the repository
+## 1. Clone the repository
 
 ```bash
 git clone <repo-url>
 cd "Notes App"
 ```
 
-### 2. Backend Setup
+## 2. Backend Setup
 
 ```bash
 cd server
@@ -73,7 +73,7 @@ Start the server:
 npm run dev
 ```
 
-### 3. Frontend Setup
+## 3. Frontend Setup
 
 ```bash
 cd client
@@ -92,7 +92,21 @@ Start the dev server:
 npm run dev
 ```
 
-## 🔗 API Endpoints
+## 4. Run with Docker (Alternative Setup)
+
+If you prefer to run the application using Docker, ensure Docker and Docker Compose are installed on your machine.
+
+1. Ensure your `server/.env` and `client/.env` files are created as described in the steps above.
+2. From the root directory of the project (`Notes App`), build and run the containers:
+
+```bash
+docker-compose up --build
+```
+
+- The React **Frontend** will be accessible at `http://localhost:5173`
+- The Node **Backend** will run at `http://localhost:5000`
+
+## API Endpoints
 
 ### Auth
 
@@ -110,7 +124,7 @@ npm run dev
 | PUT    | `/api/notes/:id`  | Update a note        | Yes           |
 | DELETE | `/api/notes/:id`  | Delete a note        | Yes           |
 
-## 🔐 Environment Variables
+## Environment Variables
 
 ### Server (`server/.env`)
 
@@ -126,7 +140,7 @@ npm run dev
 | -------------- | ----------------------------------- |
 | `VITE_API_URL` | Backend API URL                     |
 
-## 🌐 Deployment
+## Deployment
 
 ### Backend → Railway
 
@@ -144,7 +158,7 @@ npm run dev
 4. Publish directory: `client/dist`
 5. Add environment variable: `VITE_API_URL=https://your-railway-url.up.railway.app/api`
 
-## 📝 Features
+## Features
 
 - ✅ User registration & login with JWT
 - ✅ Password hashing with bcrypt (12 salt rounds)

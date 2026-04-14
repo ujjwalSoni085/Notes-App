@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: notes-backend
+    ports:
+      - "5000:5000"
+    # Load environment variables from the server/.env file
+    env_file:
+      - ./server/.env
+    restart: unless-stopped
+
+  client:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: notes-frontend
+    ports:
+      - "5173:5173"
+    # Load environment variables from the client/.env file
+    env_file:
+      - ./client/.env
+    environment:
+      # Use polling for file watching in Docker to ensure hot-reload works
+      - CHOKIDAR_USEPOLLING=true 
+    depends_on:
+      - server
+    restart: unless-stopped
